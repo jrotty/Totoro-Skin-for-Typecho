@@ -17,7 +17,7 @@ function ZeComments_tx($mail,$type="mm",$uid=0){
             $img=Helper::options()->rootUrl.$udir."/avatar/".$name.'.jpg?'.filemtime($file2);
             return $img;
         }else{
-            tx($mail,$type);
+            ZeComments_tx($mail,$type);
         }
     }
 
