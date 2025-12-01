@@ -9,7 +9,7 @@
     <meta charset="<?php $this->options->charset(); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="renderer" content="webkit">
-    <meta name="viewport" content="user-scalable=no,width=720">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <title><?php $this->archiveTitle(array(
             'category'  =>  _t('分类 %s 下的文章'),
@@ -31,7 +31,7 @@
     <![endif]-->
 
     <!-- 通过自有函数输出HTML头部信息 -->
-    <?php $this->header(); ?>
+    <?php $this->header('generator=&template=&commentReply='); ?>
 </head>
 <body class="home">
 <!--[if lt IE 8]>
@@ -43,11 +43,16 @@
     <p><?php $this->options->description() ?></p>
   </header>
   <nav>
-    <a href="<?php $this->options->siteUrl(); ?>"  title="可爱的蓝孩纸" <?php if ($this->is('index')) echo 'class="a logo"'; else echo 'class="logo"'; ?>><img src="<?php $this->options->themeUrl('img/favicon.png'); ?>">香菇</a>
+    <a href="<?php $this->options->siteUrl(); ?>"  title="可爱的蓝孩纸" <?php if ($this->is('index')) echo 'class="a logo"'; else echo 'class="logo"'; ?>><img src="<?php echo $this->options->tx ? $this->options->tx : $this->options->themeUrl.'/img/favicon.png'; ?>"><?php echo $this->options->name ? $this->options->name : '香菇'; ?></a>
+
+  <?php if (!empty($this->options->hedeBlock) && in_array('cate', $this->options->hedeBlock)): ?>
+
 	<?php $this->widget('Widget_Metas_Category_List')->to($categorys); ?>
 	<?php while($categorys->next()): ?>
 	<a href="<?php $categorys->permalink(); ?>" title="<?php $categorys->description(); ?>" <?php if ($this->is('category', $categorys->slug)) echo 'class="a"'; ?>><img src="<?php $this->options->themeUrl('img/'.$categorys->slug.'.png'); ?>"><?php $categorys->name(); ?></a>
 	<?php endwhile; ?>
+  <?php endif; ?>
+
 	<?php $this->widget('Widget_Contents_Page_List')->to($pages); ?>
 	<?php while($pages->next()): ?>
 	<a href="<?php $pages->permalink(); ?>" title="<?php $pages->title(); ?>" <?php if ($this->is('page', $pages->slug)) echo 'class="a"'; ?>><img src="<?php $this->options->themeUrl('img/'.$pages->slug.'.png'); ?>"><?php $pages->title(); ?></a>

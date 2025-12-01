@@ -3,8 +3,8 @@
  * 这是仿自トトロ博客的一套皮肤
  * 
  * @package Totoro Skin for Typecho
- * @author 香菇
- * @version 1.0
+ * @author 香菇 & 泽泽
+ * @version 1.1
  * @link http://siitake.cn
  */
 
