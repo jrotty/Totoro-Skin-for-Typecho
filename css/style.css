@@ -210,9 +210,10 @@ body,input,textarea,select,button{
 @media(max-width:720px){
 	#m{width:100%;padding:0 1em;box-sizing: border-box;}
 	nav{width:100%;overflow:hidden;}
-	.cover img,.p-text p img{border-radius:0;}
+	.p-text img,img{max-width:100%}
+	.cover img,.p-text p img{border-radius:0;max-width:100%}
 	.p-text p{padding:1em 0;}
-	.p-text p img{margin:0 -1em;}
+	.p-text p img{margin:0 -1em;max-width:100%}
 
 
 	.music #m{width:auto !important;}
